@@ -1,7 +1,13 @@
 {
-  "name": "test",
+  "name": "welcome-image-generator",
   "version": "0.1.0",
+  "author": {
+    "name": "moontai0724",
+    "email": "moontai0724@gmail.com",
+    "url": "https://moontai0724.tw"
+  },
   "private": true,
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
