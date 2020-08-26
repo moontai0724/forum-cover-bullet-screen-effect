@@ -10,29 +10,38 @@ export default {
       width: 1250,
       height: 375,
       title: "程式設計版",
-      framems: 33.4,
+      framems: 10,
       timer: undefined,
-      backgroundColor: "#173744",
+      backgroundColor: "#000000",
       titleColor: "white",
-      wordColor: "lightgray",
+      wordColor: "white",
       shift: 0,
       words: [
         `console.log("Hello World!");`,
         `cout << "Hello World!\\n";`,
-        `System.out.println("Hello World!!");`,
-        `printf("Hello, world!");`,
+        `System.out.println("Hello World!");`,
+        `printf("Hello World!");`,
         `Console.WriteLine("Hello World!");`,
-        `System.Console.WriteLine("Hello world!")`,
+        `System.Console.WriteLine("Hello World!")`,
         `echo "Hello World";`,
-        `print_r("Hello World");`,
-        `var_dump("Hello World");`,
+        `print_r("Hello World!");`,
+        `var_dump("Hello World!");`,
         `不縮排是違法的行為！`,
         `兩格縮排還是四格縮排好呢？`,
         `Clean Code!`,
         `程式正常執行了，然而我卻不知道為何`,
-        `Google 很難嗎？`,
+        `先 Google 再發問!`,
         `遇到問題先搜索`,
-        `沒有 bug？肯定有問題。`
+        `沒有 bug？肯定有問題。`,
+        `200 OK`,
+        `403 Forbidden`,
+        `404 Not Found`,
+        `418 I'm a teapot.`,
+        `狗才寫 JS，汪汪汪。`,
+        `我大 JS 包山包海，真香`,
+        `問完問題不要自刪`,
+        `快逃RRR`,
+        `我是應徵前端不是後端R`,
       ],
       sentences: [],
     };
@@ -48,7 +57,7 @@ export default {
   },
   methods: {
     shuffleWords() {
-      while (this.words.length < 40) this.words = this.words.concat(this.words);
+      // while (this.words.length < 40) this.words = this.words.concat(this.words);
 
       this.words = this.words
         .map((value) => ({ sort: Math.random(), content: value }))
@@ -61,7 +70,7 @@ export default {
 
       for (let index in this.words) {
         cache += this.words[index] + " ";
-        if ((Number(index) + 1) % 4 == 0) {
+        if (cache.length > 40) {
           this.sentences.push(cache);
           cache = " ";
         }
@@ -94,10 +103,6 @@ export default {
         context.textAlign = "center";
         context.textBaseline = "middle";
         context.fillStyle = this.titleColor;
-        context.shadowOffsetX = 5;
-        context.shadowOffsetY = 5;
-        context.shadowBlur = 10;
-        context.shadowColor = "rgba(0, 0, 0, 0.65)";
         context.fillText(this.title, this.width / 2, this.height / 2);
         resolve();
       });
@@ -112,9 +117,8 @@ export default {
         context.font = `${wordHeight}px Consolas`;
         context.textBaseline = "alphabetic";
         context.fillStyle = this.wordColor;
-        context.shadowColor = "rgba(0, 0, 0, 0)";
-        
-        this.shift = this.shift + 5;
+
+        this.shift = this.shift + this.framems * 0.75;
         for (let index in this.sentences) {
           context.textAlign = index % 2 == 0 ? "right" : "left";
           let x = this.shift,
