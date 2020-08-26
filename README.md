@@ -1,4 +1,5 @@
-# test
+# welcome-image-generator
+A canvas practice for generate a cover image with bullet screen effect for welcome message in Bahamut forum.
 
 ## Project setup
 ```
